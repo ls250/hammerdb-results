@@ -1,0 +1,1096 @@
+{
+  "schema": "hammerdb-job-report-v1",
+  "description": "HammerDB benchmark result artifact. Machine-readable data, report_hints and analysis_hints are included for reproducible reporting, summary tables and chart generation.",
+  "artifact": {
+    "type": "hammerdb-result-json",
+    "schema": "hammerdb-job-report-v1",
+    "source": "HammerDB",
+    "generated_by": "HammerDB jobs summaryjson",
+    "visibility": "public",
+    "redacted": true
+  },
+  "disclaimer": {
+    "result_type": "HammerDB result artifact",
+    "audited": false,
+    "text": "This is a HammerDB result artifact. HammerDB TPROC-C and TPROC-H workloads are derived from the TPC-C and TPC-H specifications respectively. This result is not audited by the TPC-Council and is not a TPC result.",
+    "tpc_trademarks": "TPC-C, tpmC, TPC-H and QphH are trademarks of the Transaction Processing Performance Council. Unauthorised and unaudited use of official TPC result trademarks is not permitted.",
+    "hammerdb_copyright": "HammerDB is open source software distributed under the GNU General Public License (GPL). HammerDB source code, TPROC-C and TPROC-H workload implementations, documentation and related materials are copyright HammerDB Ltd. NOPM, TPROC-C and TPROC-H are HammerDB benchmark terminology.",
+    "learn_more_tpc": "https://www.tpc.org/",
+    "learn_more_hammerdb": "https://www.hammerdb.com/"
+  },
+  "report_hints": {
+    "title": "PostgreSQL TPROC-C Benchmark Report",
+    "intended_use": "Use this JSON to generate benchmark reports, summary tables, charts and public result artifact pages.",
+    "primary_result_metrics": [
+      "NOPM",
+      "TPM"
+    ],
+    "recommended_charts": [
+      {
+        "title": "PostgreSQL TPROC-C Result",
+        "chart_type": "bar",
+        "data_path": "result.chart_data",
+        "x": "metric",
+        "y": "value"
+      },
+      {
+        "title": "PostgreSQL TPROC-C Transaction Count",
+        "chart_type": "line",
+        "data_path": "transaction_count.series[].points",
+        "x": "timestamp",
+        "y": "value"
+      },
+      {
+        "title": "PostgreSQL TPROC-C Response Times",
+        "chart_type": "boxplot",
+        "data_path": "response_times.rows",
+        "category": "name",
+        "values": [
+          "p25_ms",
+          "p50_ms",
+          "p75_ms",
+          "p95_ms",
+          "p99_ms"
+        ]
+      },
+      {
+        "title": "PostgreSQL CPU %",
+        "chart_type": "line",
+        "data_path": "metrics.cpu_percent",
+        "x": "timestamp",
+        "y_series": [
+          "usr_pct",
+          "sys_pct",
+          "irq_pct",
+          "idle_pct"
+        ]
+      },
+      {
+        "title": "PostgreSQL IOPS",
+        "chart_type": "line",
+        "data_path": "metrics.iops",
+        "x": "timestamp",
+        "y": "value"
+      },
+      {
+        "title": "PostgreSQL MB/s",
+        "chart_type": "line",
+        "data_path": "metrics.mbps",
+        "x": "timestamp",
+        "y": "value"
+      }
+    ],
+    "notes": [
+      "For TPROC-C, final low transaction_count values may be the end-of-test shutdown tail rather than steady-state throughput.",
+      "Use database_display for human-readable report headings and database for HammerDB internal identifiers."
+    ]
+  },
+  "analysis_hints": {
+    "active_window": {
+      "available": true,
+      "start": "2026-08-25 13:59:33",
+      "end": "2026-08-25 14:06:34",
+      "method": "First to last transaction_count value above shutdown-tail threshold.",
+      "transaction_count_min_active_value": 1000,
+      "recommended_filter": "For charts and narrative summaries, filter transaction_count, CPU, IOPS and MB/s to this active_window."
+    },
+    "shutdown_tail": {
+      "present": true,
+      "threshold": 1000,
+      "note": "Repeated low transaction_count, IOPS and MB/s values after active_window.end are usually the end-of-test shutdown tail and should normally be excluded from charts and summaries."
+    }
+  },
+  "job": {
+    "jobid": "6A8D9FBB829503E283432323",
+    "hdb_version": "v6.0-cloud",
+    "database": "PostgreSQL",
+    "database_display": "PostgreSQL",
+    "release": "18.6",
+    "benchmark": "TPROC-C",
+    "timestamp": "2026-08-25 13:59:23"
+  },
+  "benchmark_config": {
+    "warehouses": 70,
+    "virtual_users": 8,
+    "rampup_minutes": 2,
+    "duration_minutes": 5
+  },
+  "system": {
+    "available": true,
+    "hostname": "localhost",
+    "cpumodel": "Intel(R) Xeon(R) Platinum 8488C",
+    "cpucount": "8",
+    "system_vendor": "Amazon EC2",
+    "system_type": "m7i.2xlarge",
+    "os_name": "Ubuntu 24.04.4 LTS",
+    "memory": "30.8 GB",
+    "nic": "enp39s0 (Unknown)",
+    "storage": "Amazon Elastic Block Store (200 GB)",
+    "cloud_instance": "AWS m7i.2xlarge"
+  },
+  "result": {
+    "type": "tproc_c_result",
+    "database_display": "PostgreSQL",
+    "active_virtual_users": 8,
+    "nopm": 352308,
+    "tpm": 810341,
+    "chart_data": [
+      {
+        "metric": "NOPM",
+        "value": 352308
+      },
+      {
+        "metric": "TPM",
+        "value": 810341
+      }
+    ]
+  },
+  "transaction_count": {
+    "available": true,
+    "series": [
+      {
+        "name": "PostgreSQL tpm",
+        "database": "PostgreSQL",
+        "database_display": "PostgreSQL",
+        "metric": "tpm",
+        "points": [
+          {
+            "timestamp": "2026-08-25 13:59:23",
+            "value": 0
+          },
+          {
+            "timestamp": "2026-08-25 13:59:33",
+            "value": 619344
+          },
+          {
+            "timestamp": "2026-08-25 13:59:43",
+            "value": 869226
+          },
+          {
+            "timestamp": "2026-08-25 13:59:53",
+            "value": 818730
+          },
+          {
+            "timestamp": "2026-08-25 14:00:03",
+            "value": 793494
+          },
+          {
+            "timestamp": "2026-08-25 14:00:13",
+            "value": 769008
+          },
+          {
+            "timestamp": "2026-08-25 14:00:23",
+            "value": 841410
+          },
+          {
+            "timestamp": "2026-08-25 14:00:33",
+            "value": 822060
+          },
+          {
+            "timestamp": "2026-08-25 14:00:43",
+            "value": 839664
+          },
+          {
+            "timestamp": "2026-08-25 14:00:53",
+            "value": 783828
+          },
+          {
+            "timestamp": "2026-08-25 14:01:03",
+            "value": 797028
+          },
+          {
+            "timestamp": "2026-08-25 14:01:13",
+            "value": 804048
+          },
+          {
+            "timestamp": "2026-08-25 14:01:23",
+            "value": 824160
+          },
+          {
+            "timestamp": "2026-08-25 14:01:33",
+            "value": 822072
+          },
+          {
+            "timestamp": "2026-08-25 14:01:43",
+            "value": 757680
+          },
+          {
+            "timestamp": "2026-08-25 14:01:53",
+            "value": 846528
+          },
+          {
+            "timestamp": "2026-08-25 14:02:03",
+            "value": 814290
+          },
+          {
+            "timestamp": "2026-08-25 14:02:13",
+            "value": 839538
+          },
+          {
+            "timestamp": "2026-08-25 14:02:23",
+            "value": 779154
+          },
+          {
+            "timestamp": "2026-08-25 14:02:33",
+            "value": 826332
+          },
+          {
+            "timestamp": "2026-08-25 14:02:43",
+            "value": 805644
+          },
+          {
+            "timestamp": "2026-08-25 14:02:53",
+            "value": 833778
+          },
+          {
+            "timestamp": "2026-08-25 14:03:03",
+            "value": 804348
+          },
+          {
+            "timestamp": "2026-08-25 14:03:13",
+            "value": 763686
+          },
+          {
+            "timestamp": "2026-08-25 14:03:23",
+            "value": 814542
+          },
+          {
+            "timestamp": "2026-08-25 14:03:33",
+            "value": 845958
+          },
+          {
+            "timestamp": "2026-08-25 14:03:43",
+            "value": 837432
+          },
+          {
+            "timestamp": "2026-08-25 14:03:53",
+            "value": 795066
+          },
+          {
+            "timestamp": "2026-08-25 14:04:04",
+            "value": 794904
+          },
+          {
+            "timestamp": "2026-08-25 14:04:14",
+            "value": 799524
+          },
+          {
+            "timestamp": "2026-08-25 14:04:24",
+            "value": 811248
+          },
+          {
+            "timestamp": "2026-08-25 14:04:34",
+            "value": 794466
+          },
+          {
+            "timestamp": "2026-08-25 14:04:44",
+            "value": 823698
+          },
+          {
+            "timestamp": "2026-08-25 14:04:54",
+            "value": 776706
+          },
+          {
+            "timestamp": "2026-08-25 14:05:04",
+            "value": 829506
+          },
+          {
+            "timestamp": "2026-08-25 14:05:14",
+            "value": 814620
+          },
+          {
+            "timestamp": "2026-08-25 14:05:24",
+            "value": 799464
+          },
+          {
+            "timestamp": "2026-08-25 14:05:34",
+            "value": 818736
+          },
+          {
+            "timestamp": "2026-08-25 14:05:44",
+            "value": 798678
+          },
+          {
+            "timestamp": "2026-08-25 14:05:54",
+            "value": 835158
+          },
+          {
+            "timestamp": "2026-08-25 14:06:04",
+            "value": 778320
+          },
+          {
+            "timestamp": "2026-08-25 14:06:14",
+            "value": 826242
+          },
+          {
+            "timestamp": "2026-08-25 14:06:24",
+            "value": 822918
+          },
+          {
+            "timestamp": "2026-08-25 14:06:34",
+            "value": 51888
+          },
+          {
+            "timestamp": "2026-08-25 14:06:44",
+            "value": 42
+          }
+        ]
+      }
+    ]
+  },
+  "response_times": {
+    "type": "boxplot",
+    "unit": "milliseconds",
+    "rows": [
+      {
+        "name": "NEWORD",
+        "elapsed_ms": 418329.5,
+        "calls": 2460132,
+        "min_ms": 0.268,
+        "avg_ms": 0.649,
+        "max_ms": 385.887,
+        "total_ms": 1597173.19,
+        "p99_ms": 1.152,
+        "p95_ms": 0.783,
+        "p75_ms": 0.689,
+        "p50_ms": 0.616,
+        "p25_ms": 0.542,
+        "sd": 1.439,
+        "ratio_pct": 47.725
+      },
+      {
+        "name": "PAYMENT",
+        "elapsed_ms": 418329.5,
+        "calls": 2459052,
+        "min_ms": 0.118,
+        "avg_ms": 0.338,
+        "max_ms": 384.263,
+        "total_ms": 831419.193,
+        "p99_ms": 0.736,
+        "p95_ms": 0.452,
+        "p75_ms": 0.352,
+        "p50_ms": 0.31,
+        "p25_ms": 0.275,
+        "sd": 0.139,
+        "ratio_pct": 24.843
+      },
+      {
+        "name": "DELIVERY",
+        "elapsed_ms": 418329.5,
+        "calls": 245685,
+        "min_ms": 0.655,
+        "avg_ms": 1.478,
+        "max_ms": 322.914,
+        "total_ms": 363043.281,
+        "p99_ms": 2.736,
+        "p95_ms": 1.955,
+        "p75_ms": 1.559,
+        "p50_ms": 1.374,
+        "p25_ms": 1.242,
+        "sd": 2.164,
+        "ratio_pct": 10.848
+      },
+      {
+        "name": "SLEV",
+        "elapsed_ms": 418329.5,
+        "calls": 245764,
+        "min_ms": 0.385,
+        "avg_ms": 1.157,
+        "max_ms": 188.668,
+        "total_ms": 284230.099,
+        "p99_ms": 2.247,
+        "p95_ms": 1.573,
+        "p75_ms": 1.273,
+        "p50_ms": 1.095,
+        "p25_ms": 0.953,
+        "sd": 0.335,
+        "ratio_pct": 8.493
+      },
+      {
+        "name": "OSTAT",
+        "elapsed_ms": 418329.5,
+        "calls": 245691,
+        "min_ms": 0.096,
+        "avg_ms": 0.281,
+        "max_ms": 187.037,
+        "total_ms": 68950.853,
+        "p99_ms": 0.656,
+        "p95_ms": 0.392,
+        "p75_ms": 0.301,
+        "p50_ms": 0.259,
+        "p25_ms": 0.223,
+        "sd": 0.154,
+        "ratio_pct": 2.06
+      }
+    ]
+  },
+  "metrics": {
+    "available": true,
+    "cpu_percent": [
+      {
+        "timestamp": "2026-08-25 13:59:34",
+        "usr_pct": 68.71,
+        "sys_pct": 4.14,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 13:59:44",
+        "usr_pct": 94.4,
+        "sys_pct": 4.06,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 13:59:54",
+        "usr_pct": 93.75,
+        "sys_pct": 3.96,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:00:04",
+        "usr_pct": 90.97,
+        "sys_pct": 3.64,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:00:14",
+        "usr_pct": 88.05,
+        "sys_pct": 3.45,
+        "irq_pct": 0,
+        "idle_pct": 1.63
+      },
+      {
+        "timestamp": "2026-08-25 14:00:24",
+        "usr_pct": 94.65,
+        "sys_pct": 3.78,
+        "irq_pct": 0,
+        "idle_pct": 0.09
+      },
+      {
+        "timestamp": "2026-08-25 14:00:34",
+        "usr_pct": 94.15,
+        "sys_pct": 4.04,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:00:44",
+        "usr_pct": 93.86,
+        "sys_pct": 3.84,
+        "irq_pct": 0,
+        "idle_pct": 0.42
+      },
+      {
+        "timestamp": "2026-08-25 14:00:54",
+        "usr_pct": 90.19,
+        "sys_pct": 3.66,
+        "irq_pct": 0,
+        "idle_pct": 1.07
+      },
+      {
+        "timestamp": "2026-08-25 14:01:04",
+        "usr_pct": 88.89,
+        "sys_pct": 3.68,
+        "irq_pct": 0,
+        "idle_pct": 3.14
+      },
+      {
+        "timestamp": "2026-08-25 14:01:14",
+        "usr_pct": 92.69,
+        "sys_pct": 3.58,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:01:24",
+        "usr_pct": 94.86,
+        "sys_pct": 3.66,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:01:34",
+        "usr_pct": 94.31,
+        "sys_pct": 3.87,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:01:44",
+        "usr_pct": 88.92,
+        "sys_pct": 3.82,
+        "irq_pct": 0,
+        "idle_pct": 2.3
+      },
+      {
+        "timestamp": "2026-08-25 14:01:54",
+        "usr_pct": 94.14,
+        "sys_pct": 3.71,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:02:04",
+        "usr_pct": 93.97,
+        "sys_pct": 3.71,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:02:14",
+        "usr_pct": 94.47,
+        "sys_pct": 3.77,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:02:24",
+        "usr_pct": 89.12,
+        "sys_pct": 3.68,
+        "irq_pct": 0,
+        "idle_pct": 0.6
+      },
+      {
+        "timestamp": "2026-08-25 14:02:34",
+        "usr_pct": 93.96,
+        "sys_pct": 4.03,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:02:44",
+        "usr_pct": 93.46,
+        "sys_pct": 3.77,
+        "irq_pct": 0,
+        "idle_pct": 0.59
+      },
+      {
+        "timestamp": "2026-08-25 14:02:54",
+        "usr_pct": 93.73,
+        "sys_pct": 3.89,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:03:04",
+        "usr_pct": 93.58,
+        "sys_pct": 3.77,
+        "irq_pct": 0,
+        "idle_pct": 0.8
+      },
+      {
+        "timestamp": "2026-08-25 14:03:14",
+        "usr_pct": 84.92,
+        "sys_pct": 3.13,
+        "irq_pct": 0,
+        "idle_pct": 3.81
+      },
+      {
+        "timestamp": "2026-08-25 14:03:24",
+        "usr_pct": 94.1,
+        "sys_pct": 3.84,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:03:34",
+        "usr_pct": 94.08,
+        "sys_pct": 3.83,
+        "irq_pct": 0,
+        "idle_pct": 0.26
+      },
+      {
+        "timestamp": "2026-08-25 14:03:44",
+        "usr_pct": 94.18,
+        "sys_pct": 3.87,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:03:54",
+        "usr_pct": 92.44,
+        "sys_pct": 4.18,
+        "irq_pct": 0,
+        "idle_pct": 1.15
+      },
+      {
+        "timestamp": "2026-08-25 14:04:04",
+        "usr_pct": 93.68,
+        "sys_pct": 3.9,
+        "irq_pct": 0,
+        "idle_pct": 0.66
+      },
+      {
+        "timestamp": "2026-08-25 14:04:14",
+        "usr_pct": 89.95,
+        "sys_pct": 3.5,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:04:24",
+        "usr_pct": 92.12,
+        "sys_pct": 3.87,
+        "irq_pct": 0,
+        "idle_pct": 0.53
+      },
+      {
+        "timestamp": "2026-08-25 14:04:34",
+        "usr_pct": 91.23,
+        "sys_pct": 3.88,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:04:44",
+        "usr_pct": 93.16,
+        "sys_pct": 3.67,
+        "irq_pct": 0,
+        "idle_pct": 0.71
+      },
+      {
+        "timestamp": "2026-08-25 14:04:54",
+        "usr_pct": 90.6,
+        "sys_pct": 3.9,
+        "irq_pct": 0,
+        "idle_pct": 1.34
+      },
+      {
+        "timestamp": "2026-08-25 14:05:04",
+        "usr_pct": 93.38,
+        "sys_pct": 3.93,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:05:14",
+        "usr_pct": 94.5,
+        "sys_pct": 3.81,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:05:24",
+        "usr_pct": 93.17,
+        "sys_pct": 3.94,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:05:34",
+        "usr_pct": 94.3,
+        "sys_pct": 4,
+        "irq_pct": 0,
+        "idle_pct": 0.27
+      },
+      {
+        "timestamp": "2026-08-25 14:05:44",
+        "usr_pct": 94.48,
+        "sys_pct": 3.81,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:05:54",
+        "usr_pct": 93.43,
+        "sys_pct": 3.81,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:06:04",
+        "usr_pct": 92.33,
+        "sys_pct": 4.23,
+        "irq_pct": 0,
+        "idle_pct": 0.39
+      },
+      {
+        "timestamp": "2026-08-25 14:06:14",
+        "usr_pct": 93.5,
+        "sys_pct": 3.71,
+        "irq_pct": 0,
+        "idle_pct": 0.62
+      },
+      {
+        "timestamp": "2026-08-25 14:06:24",
+        "usr_pct": 91.57,
+        "sys_pct": 3.78,
+        "irq_pct": 0,
+        "idle_pct": 0
+      },
+      {
+        "timestamp": "2026-08-25 14:06:34",
+        "usr_pct": 14.25,
+        "sys_pct": 1.84,
+        "irq_pct": 0,
+        "idle_pct": 78.71
+      },
+      {
+        "timestamp": "2026-08-25 14:06:44",
+        "usr_pct": 0,
+        "sys_pct": 0.24,
+        "irq_pct": 0,
+        "idle_pct": 75.63
+      }
+    ],
+    "iops": [
+      {
+        "timestamp": "2026-08-25 13:59:34",
+        "value": 473
+      },
+      {
+        "timestamp": "2026-08-25 13:59:44",
+        "value": 181
+      },
+      {
+        "timestamp": "2026-08-25 13:59:54",
+        "value": 260
+      },
+      {
+        "timestamp": "2026-08-25 14:00:04",
+        "value": 414
+      },
+      {
+        "timestamp": "2026-08-25 14:00:14",
+        "value": 578
+      },
+      {
+        "timestamp": "2026-08-25 14:00:24",
+        "value": 321
+      },
+      {
+        "timestamp": "2026-08-25 14:00:34",
+        "value": 242
+      },
+      {
+        "timestamp": "2026-08-25 14:00:44",
+        "value": 2183
+      },
+      {
+        "timestamp": "2026-08-25 14:00:54",
+        "value": 2066
+      },
+      {
+        "timestamp": "2026-08-25 14:01:04",
+        "value": 610
+      },
+      {
+        "timestamp": "2026-08-25 14:01:14",
+        "value": 458
+      },
+      {
+        "timestamp": "2026-08-25 14:01:24",
+        "value": 856
+      },
+      {
+        "timestamp": "2026-08-25 14:01:34",
+        "value": 1578
+      },
+      {
+        "timestamp": "2026-08-25 14:01:44",
+        "value": 2186
+      },
+      {
+        "timestamp": "2026-08-25 14:01:54",
+        "value": 2016
+      },
+      {
+        "timestamp": "2026-08-25 14:02:04",
+        "value": 1703
+      },
+      {
+        "timestamp": "2026-08-25 14:02:14",
+        "value": 596
+      },
+      {
+        "timestamp": "2026-08-25 14:02:24",
+        "value": 1182
+      },
+      {
+        "timestamp": "2026-08-25 14:02:34",
+        "value": 3176
+      },
+      {
+        "timestamp": "2026-08-25 14:02:44",
+        "value": 1963
+      },
+      {
+        "timestamp": "2026-08-25 14:02:54",
+        "value": 2026
+      },
+      {
+        "timestamp": "2026-08-25 14:03:04",
+        "value": 1116
+      },
+      {
+        "timestamp": "2026-08-25 14:03:14",
+        "value": 592
+      },
+      {
+        "timestamp": "2026-08-25 14:03:24",
+        "value": 501
+      },
+      {
+        "timestamp": "2026-08-25 14:03:34",
+        "value": 3214
+      },
+      {
+        "timestamp": "2026-08-25 14:03:44",
+        "value": 729
+      },
+      {
+        "timestamp": "2026-08-25 14:03:54",
+        "value": 3404
+      },
+      {
+        "timestamp": "2026-08-25 14:04:04",
+        "value": 2735
+      },
+      {
+        "timestamp": "2026-08-25 14:04:14",
+        "value": 991
+      },
+      {
+        "timestamp": "2026-08-25 14:04:24",
+        "value": 1814
+      },
+      {
+        "timestamp": "2026-08-25 14:04:34",
+        "value": 3030
+      },
+      {
+        "timestamp": "2026-08-25 14:04:44",
+        "value": 2314
+      },
+      {
+        "timestamp": "2026-08-25 14:04:54",
+        "value": 4095
+      },
+      {
+        "timestamp": "2026-08-25 14:05:04",
+        "value": 2172
+      },
+      {
+        "timestamp": "2026-08-25 14:05:14",
+        "value": 1156
+      },
+      {
+        "timestamp": "2026-08-25 14:05:24",
+        "value": 3019
+      },
+      {
+        "timestamp": "2026-08-25 14:05:34",
+        "value": 2713
+      },
+      {
+        "timestamp": "2026-08-25 14:05:44",
+        "value": 2075
+      },
+      {
+        "timestamp": "2026-08-25 14:05:54",
+        "value": 1943
+      },
+      {
+        "timestamp": "2026-08-25 14:06:04",
+        "value": 1809
+      },
+      {
+        "timestamp": "2026-08-25 14:06:14",
+        "value": 2876
+      },
+      {
+        "timestamp": "2026-08-25 14:06:24",
+        "value": 2849
+      },
+      {
+        "timestamp": "2026-08-25 14:06:34",
+        "value": 506
+      },
+      {
+        "timestamp": "2026-08-25 14:06:44",
+        "value": 3159
+      }
+    ],
+    "mbps": [
+      {
+        "timestamp": "2026-08-25 13:59:34",
+        "value": 65.59
+      },
+      {
+        "timestamp": "2026-08-25 13:59:44",
+        "value": 41.49
+      },
+      {
+        "timestamp": "2026-08-25 13:59:54",
+        "value": 60.77
+      },
+      {
+        "timestamp": "2026-08-25 14:00:04",
+        "value": 76.67
+      },
+      {
+        "timestamp": "2026-08-25 14:00:14",
+        "value": 107.81
+      },
+      {
+        "timestamp": "2026-08-25 14:00:24",
+        "value": 57.52
+      },
+      {
+        "timestamp": "2026-08-25 14:00:34",
+        "value": 57.98
+      },
+      {
+        "timestamp": "2026-08-25 14:00:44",
+        "value": 97.98
+      },
+      {
+        "timestamp": "2026-08-25 14:00:54",
+        "value": 115.37
+      },
+      {
+        "timestamp": "2026-08-25 14:01:04",
+        "value": 100.86
+      },
+      {
+        "timestamp": "2026-08-25 14:01:14",
+        "value": 86.02
+      },
+      {
+        "timestamp": "2026-08-25 14:01:24",
+        "value": 67.36
+      },
+      {
+        "timestamp": "2026-08-25 14:01:34",
+        "value": 83.72
+      },
+      {
+        "timestamp": "2026-08-25 14:01:44",
+        "value": 122.81
+      },
+      {
+        "timestamp": "2026-08-25 14:01:54",
+        "value": 61.6
+      },
+      {
+        "timestamp": "2026-08-25 14:02:04",
+        "value": 103.51
+      },
+      {
+        "timestamp": "2026-08-25 14:02:14",
+        "value": 62.31
+      },
+      {
+        "timestamp": "2026-08-25 14:02:24",
+        "value": 89.01
+      },
+      {
+        "timestamp": "2026-08-25 14:02:34",
+        "value": 94.01
+      },
+      {
+        "timestamp": "2026-08-25 14:02:44",
+        "value": 99.76
+      },
+      {
+        "timestamp": "2026-08-25 14:02:54",
+        "value": 66.06
+      },
+      {
+        "timestamp": "2026-08-25 14:03:04",
+        "value": 92.48
+      },
+      {
+        "timestamp": "2026-08-25 14:03:14",
+        "value": 119.23
+      },
+      {
+        "timestamp": "2026-08-25 14:03:24",
+        "value": 54.07
+      },
+      {
+        "timestamp": "2026-08-25 14:03:34",
+        "value": 122.7
+      },
+      {
+        "timestamp": "2026-08-25 14:03:44",
+        "value": 59.53
+      },
+      {
+        "timestamp": "2026-08-25 14:03:54",
+        "value": 126.47
+      },
+      {
+        "timestamp": "2026-08-25 14:04:04",
+        "value": 98.48
+      },
+      {
+        "timestamp": "2026-08-25 14:04:14",
+        "value": 94.74
+      },
+      {
+        "timestamp": "2026-08-25 14:04:24",
+        "value": 83.69
+      },
+      {
+        "timestamp": "2026-08-25 14:04:34",
+        "value": 118.01
+      },
+      {
+        "timestamp": "2026-08-25 14:04:44",
+        "value": 102.28
+      },
+      {
+        "timestamp": "2026-08-25 14:04:54",
+        "value": 125.06
+      },
+      {
+        "timestamp": "2026-08-25 14:05:04",
+        "value": 91.61
+      },
+      {
+        "timestamp": "2026-08-25 14:05:14",
+        "value": 70.57
+      },
+      {
+        "timestamp": "2026-08-25 14:05:24",
+        "value": 125.86
+      },
+      {
+        "timestamp": "2026-08-25 14:05:34",
+        "value": 109.8
+      },
+      {
+        "timestamp": "2026-08-25 14:05:44",
+        "value": 88.52
+      },
+      {
+        "timestamp": "2026-08-25 14:05:54",
+        "value": 89.69
+      },
+      {
+        "timestamp": "2026-08-25 14:06:04",
+        "value": 115.4
+      },
+      {
+        "timestamp": "2026-08-25 14:06:14",
+        "value": 113.61
+      },
+      {
+        "timestamp": "2026-08-25 14:06:24",
+        "value": 130.58
+      },
+      {
+        "timestamp": "2026-08-25 14:06:34",
+        "value": 37.03
+      },
+      {
+        "timestamp": "2026-08-25 14:06:44",
+        "value": 126.72
+      }
+    ]
+  }
+}
